@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+
+{% block head %}
+<title>Blog</title>
+{% endblock %}
+{% block body%}
+<div class="container">
+    <div class="span8">
+        <h2>{{ post.title }}</h2>
+        <h4>By {{ post.author.username }}</h4>
+        <p>{{ post.content }}</p>
+        <div class="d-flex justify-content-between mb-2">
+            <span class="badge badge-success">Posted {{ post.date_post.strftime("%m/%d/%Y, %H:%M:%S") }}</span>
+        </div>
+        {% if post.author == current_user %}
+            <div>
+                <a class="btn btn-secondary bt-small m-1" href="{{ url_for('edit', post_id=post.id)}}">Edit</a>
+                <button type="button" class="btn btn-danger bt-small m-1" data-toggle="modal" data-target="#DeleteModal">Delete</button>
+            </div>
+        {% endif %}
+        <hr>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="DeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="DeleteModalLabel">Delete this post?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          You cannot undo it once deleted.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="{{ url_for('delete', post_id=post.id)}}" method="POST">
+              <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

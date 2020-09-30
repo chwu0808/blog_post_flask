@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+
+{% block head %} 
+<title>Post</title>
+{% endblock %}
+
+{% block body%} 
+<body class="bg-post"></body>
+<div class="container">
+    <h1>ALL Posts</h1><br>
+    {% for post in posts%}
+        <div class="span8">
+            <h2><a style="color:black" class="post-title" href="{{ url_for('blog', post_id=post.id)}}">{{ post.title }}</a></h2>
+            <h4>By {{ post.author.username }}</h4>
+            <p>{{ post.content }}</p>
+            <div class="d-flex justify-content-between">
+                <span class="badge badge-success">Posted {{ post.date_post.strftime("%m/%d/%Y, %H:%M:%S") }}</span>
+            </div> 
+            <hr>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

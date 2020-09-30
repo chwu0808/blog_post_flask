@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+
+{% block head %}
+<title>Home</title>
+{% endblock %}
+
+{% block body%}
+<body class="bg-home">
+<div class="cover-container">
+    <main role="main" class="inner cover container align-self-center jumbotron text-center">
+        <div class="container">
+            <h1 class="cover-heading">Welcome to Blog Post!</h1>
+            <p class="lead text-muted">This is a free blog post coummity. Feel free to share any thoughts in any topics
+                here!</p>
+            <p class="lead text-muted">Please sign up or sign in first for posting.</p>
+            <div>
+                <a href="/posts" class="btn btn-lg btn-secondary">View Posts</a>
+                <a href="/register" class="btn btn-lg btn-primary">Join Now</a>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+{% block head %}
+<title>login</title>
+{% endblock %}
+
+{% block body%}
+
+<div class="container">
+    <h1>Log in Now!</h1><br>
+    <form action="/login" method="POST">
+        <div class="form-group">
+            <label for="Email">Email address</label>
+            <input type="email" class="form-control" name="Email" id="Email" aria-describedby="email" required>
+        </div>
+        <div class="form-group">
+            <label for="Password">Password</label>
+            <input type="password" class="form-control" name="Password" id="Password" required>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="Check">
+            <label class="form-check-label" for="remember">Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Log in</button>
+    </form>
+</div>
+
+{% endblock %}
